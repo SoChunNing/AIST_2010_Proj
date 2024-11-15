@@ -1,3 +1,4 @@
+
 // Declare the currentSynth variable in the main scope
     var currentSynth;
     // Initialize currentSynth to nil
@@ -16,7 +17,9 @@
             if (currentSynth.notNil) {
                 currentSynth.free;  // Stops the current sound wave
             };
-
+		    if (midiNote == 0) {
+			    currentSynth.free;
+		    };
             // Create a new Synth with the updated frequency
             currentSynth = Synth(\simpleWave, [\freq, freq]);
         },
@@ -33,4 +36,3 @@
         // Output the signal to both left and right channels (stereo)
         Out.ar(0, sig ! 2);
     }).add;
-
