@@ -10,6 +10,7 @@
         { |msg|
         var recive_num = msg[1]; // Extract the frequency value from the OSC message
 		var mode = msg[2];
+		var instrument_id = msg[3];
 		var freq;
 		if (mode == 0) {
 			freq = recive_num;
@@ -24,16 +25,20 @@
             currentSynth.free;  // Stops the current sound wave
         };
 		if (recive_num == 0) {
-			currentSynth.free;
+			currentSynth.free; // Stops sound synth when freq == 0
+		} {
+		//Sound Synth according to the instrument chose
+		if (instrument_id == 0){
+        currentSynth = Synth(\sineWave, [\freq, freq]); //Sine Oscillator
+		} { currentSynth = Synth(\handflute, [\freq, freq]); //Hand Flute
 		};
-        // Create a new Synth with the updated frequency
-        currentSynth = Synth(\simpleWave, [\freq, freq]);
+		};
         },
         '/from_python'  // OSC address to listen for
     );
 
     // Define a SynthDef for a simple sine wave oscillator
-    SynthDef(\simpleWave, { |freq = 440, amp = 0.5|
+    SynthDef(\sineWave, { |freq = 440, amp = 0.5|
         var sig;
 
         // Generate a sine wave oscillator with the specified frequency
@@ -43,4 +48,30 @@
         Out.ar(0, sig ! 2);
     }).add;
 
+
+// Create a buffer for the audio file
+~buffer = Buffer.read(s, "music_source/hand-flute-middle_filtered.wav");
+
+SynthDef(\handflute, {
+    |out = 0, freq = 880, originalFreq = 830.61, amp = 0.5|
+
+    var playbackRate, signal;
+
+    // Calculate the playback rate to change the frequency from originalFreq to targetFreq
+    playbackRate = freq / originalFreq;
+
+    // Play the recorded audio with the calculated playback rate
+    signal = PlayBuf.ar(1, ~buffer.bufnum, rate: playbackRate, loop: 1);
+
+    // Output the sound with volume control
+    Out.ar(out, signal * amp ! 2);
+}).add;
+
+
+// Play the audio with frequency change from 440 Hz to 880 Hz
+~synth = Synth(\handflute, [\freq, 880]);
+
+// Stop playback
+~synth.free;
 s.boot();
+

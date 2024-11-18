@@ -2,14 +2,16 @@
 from pythonosc import udp_client
 
 
-def sound_synth(midi_freq, mode):
+def sound_synth(midi_freq, mode, instrument_id):
     # Setup the OSC client
     client = udp_client.SimpleUDPClient("127.0.0.1", 57120)
     
     # Send each frequency value with a delay
     
-    print(f"Sending Midinote Number: {midi_freq},  ")
-    client.send_message("/from_python", [midi_freq, mode])
+    print(f"Sending Midinote Number: {midi_freq} ")
+    client.send_message("/from_python", [midi_freq, mode, instrument_id])
+
+sound_synth(81, 1, 1)
 
 
 
