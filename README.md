@@ -9,3 +9,6 @@ Important Dates:<br/>
 
 Project Sharing PPT：<br/>
 https://docs.google.com/presentation/d/1jZpx-BIVzBqLPx7YYhFejCKX-UFY6bHy9MKYlhDDMcM/edit?usp=sharing<br/>
+
+Project Presentation Slide<br/>
+https://docs.google.com/presentation/d/1hUF42a1BiKXdHWZzkdCBEgjuCQkRzSA2ZCkN1QXTEQs/edit?usp=sharing<br/>
