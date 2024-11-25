@@ -203,7 +203,9 @@ def detect_hand_gesture(mode=0, midinote=81):
                                                 i = (i + 1) % len(music_midi)
                                                 #time.sleep(0.5)
                                             key_pressed_z = True
-                                    else: key_pressed_z = False
+                                    else:
+                                        sound_synth(0, mode, instrument_id)
+                                        key_pressed_z = False
                     case 2:
                         if gesture_text == "One":
                             if not recording:
