@@ -12,3 +12,6 @@ https://docs.google.com/presentation/d/1jZpx-BIVzBqLPx7YYhFejCKX-UFY6bHy9MKYlhDD
 
 Project Presentation Slide<br/>
 https://docs.google.com/presentation/d/1hUF42a1BiKXdHWZzkdCBEgjuCQkRzSA2ZCkN1QXTEQs/edit?usp=sharing<br/>
+
+Project Report<br/>
+https://docs.google.com/document/d/10SabEN6b_AI0yCsUPnK4l7hKdkkP6UolBi6Zv6TV2ik/edit?usp=sharing<br/>
